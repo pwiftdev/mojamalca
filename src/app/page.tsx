@@ -121,7 +121,7 @@ export default function Home() {
           className="relative z-20 flex flex-col items-center justify-center w-full h-full px-4"
         >
           <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-300 text-center mb-4 tracking-tight drop-shadow-lg">
-            Zdrava, sveža in kakovostna mal'ca za podjetja
+            Zdrava, sveža in kakovostna mal&apos;ca za podjetja
           </h1>
           <p className="text-lg md:text-xl text-gray-200 text-center max-w-2xl mb-8 drop-shadow">
             Dostavljamo okusne in uravnotežene obroke za mala in velika podjetja po Gorenjski. Preprosto naročanje, hitra dostava in vedno nasmejana ekipa!
@@ -132,7 +132,7 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
               className="bg-yellow-400 hover:bg-yellow-300 text-[#231F20] font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-all duration-200"
             >
-              Naroči mal'co
+              Naroči mal&apos;co
             </motion.button>
           </Link>
         </motion.div>
@@ -197,7 +197,7 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="relative z-10 max-w-md md:max-w-lg w-full md:ml-auto md:mr-12 bg-gradient-to-br from-orange-400 to-yellow-300 p-3 md:p-8 gap-2 md:gap-4 rounded-2xl shadow-xl flex flex-col items-center justify-center text-center backdrop-blur-md m-2"
         >
-          <h2 className="text-2xl md:text-4xl font-extrabold text-[#231F20] mb-1 md:mb-2 drop-shadow-lg">Mal'ca za podjetja</h2>
+          <h2 className="text-2xl md:text-4xl font-extrabold text-[#231F20] mb-1 md:mb-2 drop-shadow-lg">Mal&apos;ca za podjetja</h2>
           <p className="text-base md:text-lg text-[#231F20] mb-1 md:mb-2 font-medium max-w-xl">
             Ponujamo prilagodljive rešitve za mala in velika podjetja. Možnost rednih ali enkratnih naročil, prilagoditev menija glede na želje zaposlenih in enostavno naročanje preko spleta.
           </p>
@@ -268,7 +268,7 @@ export default function Home() {
         className="w-full max-w-2xl bg-[#2d292a] rounded-2xl shadow-xl p-8 mt-10 flex flex-col items-center"
       >
         <h2 className="text-3xl font-extrabold text-yellow-300 mb-4">Kontaktirajte nas</h2>
-        <p className="text-gray-200 mb-6 text-center">Za naročila, povpraševanja ali dodatne informacije izpolnite spodnji obrazec ali nam pišite na <a href='mailto:info@mojamalca.si' className='underline text-yellow-300'>info@mojamalca.si</a>.</p>
+        <p className="text-gray-200 mb-6 text-center">Za naročila, povpraševanja ali dodatne informacije izpolnite spodnji obrazec ali nam pišite na <a href="mailto:info@mojamalca.si" className="underline text-yellow-300">info@mojamalca.si</a>.</p>
         <form className="w-full flex flex-col gap-4">
           <input type="text" placeholder="Ime in priimek" className="rounded-lg p-3 bg-[#231F20] text-white placeholder-gray-400 border border-gray-600 focus:border-yellow-400 outline-none" required />
           <input type="email" placeholder="E-pošta" className="rounded-lg p-3 bg-[#231F20] text-white placeholder-gray-400 border border-gray-600 focus:border-yellow-400 outline-none" required />
@@ -334,7 +334,7 @@ export default function Home() {
           </div>
         </div>
         <div className="w-full flex justify-center mt-6">
-          <span className="text-center text-gray-400">© {new Date().getFullYear()} mojamalca.si &mdash; Klik. Dostava. Mal'ca.</span>
+          <span className="text-center text-gray-400">© {new Date().getFullYear()} mojamalca.si &mdash; Klik. Dostava. Mal&apos;ca.</span>
         </div>
       </motion.footer>
     </main>
