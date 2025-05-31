@@ -2,12 +2,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const parallaxRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLImageElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const fullText = "Zdrava, sveža in kakovostna mal'ca za podjetja";
+  const controls = useAnimation();
+
+  // Add these refs and inView states for the cards
+  const card1Ref = useRef(null);
+  const card2Ref = useRef(null);
+  const card3Ref = useRef(null);
+  const card1InView = useInView(card1Ref, { once: false, amount: 0.6 });
+  const card2InView = useInView(card2Ref, { once: false, amount: 0.6 });
+  const card3InView = useInView(card3Ref, { once: false, amount: 0.6 });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,10 +35,39 @@ export default function Home() {
           imageRef.current.style.transform = `translateY(${translate}px)`;
         }
       }
+
+      // Calculate scroll progress for hero section
+      const scrollPosition = window.scrollY;
+      const maxScroll = window.innerHeight * 0.5; // Adjust this value to control when max speed is reached
+      const progress = Math.min(scrollPosition / maxScroll, 1);
+      setScrollProgress(progress);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    let currentIndex = 0;
+    const interval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setDisplayText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(interval);
+        // Start the floating animation after typing is complete
+        controls.start({
+          y: [0, -5, 0],
+          transition: {
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }
+        });
+      }
+    }, 50); // Adjust typing speed here
+
+    return () => clearInterval(interval);
+  }, [controls]);
 
   return (
     <main className="flex flex-col min-h-screen items-center bg-[#231F20] pb-12">
@@ -50,7 +91,6 @@ export default function Home() {
           </Link>
           {/* Desktop Nav */}
           <nav className="hidden lg:flex gap-6 lg:gap-10 text-lg font-extrabold uppercase tracking-wide items-center">
-            <Link href="#" className="text-yellow-300 hover:text-yellow-400 transition-colors font-extrabold uppercase tracking-wide">Domov</Link>
             <Link href="#podjetja" className="text-yellow-300 hover:text-yellow-400 transition-colors font-extrabold uppercase tracking-wide">Za podjetja</Link>
             <Link href="#kontakt" className="text-yellow-300 hover:text-yellow-400 transition-colors font-extrabold uppercase tracking-wide">Kontakt</Link>
             <a href="tel:069846626" className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-[#231F20] font-bold py-2 px-5 rounded-full shadow transition-all duration-200 ml-4">
@@ -80,7 +120,6 @@ export default function Home() {
           {menuOpen && (
             <div className="fixed inset-0 w-screen h-screen bg-black/70 backdrop-blur-md flex items-center justify-center z-40 transition-all duration-300">
               <nav className="flex flex-col items-center justify-center gap-10 text-3xl font-extrabold uppercase tracking-wide text-yellow-300">
-                <Link href="#" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition-colors">Domov</Link>
                 <Link href="#podjetja" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition-colors">Za podjetja</Link>
                 <Link href="#kontakt" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition-colors">Kontakt</Link>
                 <a href="tel:069846626" className="flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-[#231F20] font-bold py-2 px-5 rounded-full shadow transition-all duration-200 mt-6">
@@ -106,13 +145,20 @@ export default function Home() {
         className="relative flex flex-col items-center justify-center min-h-[85vh] h-[85vh] w-full overflow-hidden"
         style={{ minHeight: '85vh', paddingTop: '88px' }}
       >
-        <Image
-          src="/pexels-ethanrwilkinson-3753488.jpg"
-          alt="Hero Background"
-          fill
-          className="object-cover object-center z-0"
-          priority
-        />
+        <motion.div
+          initial={{ scale: 1 }}
+          animate={{ scale: 1.2 }}
+          transition={{ duration: 15, ease: "linear" }}
+          className="absolute inset-0"
+        >
+          <Image
+            src="/pexels-ethanrwilkinson-3753488.jpg"
+            alt="Hero Background"
+            fill
+            className="object-cover object-center z-0"
+            priority
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-black/60 z-10" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -120,19 +166,33 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="relative z-20 flex flex-col items-center justify-center w-full h-full px-4"
         >
-          <h1 className="text-4xl md:text-5xl font-extrabold text-yellow-300 text-center mb-4 tracking-tight drop-shadow-lg">
-            Zdrava, sveža in kakovostna mal&apos;ca za podjetja
-          </h1>
+          <motion.h1 
+            animate={controls}
+            className="text-4xl md:text-5xl font-extrabold text-yellow-300 text-center mb-4 tracking-tight drop-shadow-lg min-h-[4rem]"
+          >
+            {displayText}
+            <motion.span
+              animate={{ opacity: [1, 0] }}
+              transition={{ duration: 0.5, repeat: Infinity }}
+              className="inline-block ml-1"
+            >
+              |
+            </motion.span>
+          </motion.h1>
           <p className="text-lg md:text-xl text-gray-200 text-center max-w-2xl mb-8 drop-shadow">
             Dostavljamo okusne in uravnotežene obroke za mala in velika podjetja po Gorenjski. Preprosto naročanje, hitra dostava in vedno nasmejana ekipa!
           </p>
-          <Link href="#kontakt">
+          <Link href="#kontakt" className="relative group">
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-orange-400 opacity-90 blur-[1px] group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-energy-1" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-yellow-400 opacity-90 blur-[1px] group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-energy-2" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-orange-500 opacity-90 blur-[1px] group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-energy-3" />
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-yellow-400 hover:bg-yellow-300 text-[#231F20] font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-all duration-200"
+              className="relative bg-gradient-to-r from-orange-500 via-yellow-400 to-orange-500 bg-[length:200%_100%] animate-gradient-x text-[#231F20] font-bold py-3 px-8 rounded-full text-lg shadow-lg transition-all duration-200 overflow-hidden group"
             >
-              Naroči mal&apos;co
+              <span className="relative z-10">Naroči mal&apos;co</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-orange-500 via-yellow-400 to-orange-500 bg-[length:200%_100%] animate-gradient-x opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.button>
           </Link>
         </motion.div>
@@ -220,41 +280,84 @@ export default function Home() {
       </section>
 
       {/* How it works Section */}
-      <section id="kako" className="w-full max-w-4xl py-14 mx-auto">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-yellow-300 text-center mb-10">Kako poteka poslovanje z nami?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section id="kako" className="w-full max-w-4xl py-14 mx-auto relative overflow-hidden">
+        {/* Background Circles */}
+        <div className="absolute inset-0 z-0">
+          {/* Orbiting circles */}
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            {/* First orbit */}
+            <div className="absolute w-16 h-16 rounded-full bg-orange-500/30 blur-xl animate-orbit-1" />
+            <div className="absolute w-12 h-12 rounded-full bg-yellow-400/30 blur-xl animate-orbit-1" style={{ animationDelay: '-5s' }} />
+            
+            {/* Second orbit */}
+            <div className="absolute w-14 h-14 rounded-full bg-yellow-300/30 blur-xl animate-orbit-2" />
+            <div className="absolute w-16 h-16 rounded-full bg-orange-400/30 blur-xl animate-orbit-2" style={{ animationDelay: '-8s' }} />
+            
+            {/* Third orbit */}
+            <div className="absolute w-12 h-12 rounded-full bg-orange-300/30 blur-xl animate-orbit-3" />
+            <div className="absolute w-14 h-14 rounded-full bg-yellow-400/30 blur-xl animate-orbit-3" style={{ animationDelay: '-12s' }} />
+          </div>
+        </div>
+
+        <h2 className="text-3xl md:text-4xl font-extrabold text-yellow-300 text-center mb-10 relative z-10">Kako poteka poslovanje z nami?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 relative px-4 md:px-0 z-10">
+          {/* Connecting Lines */}
+          <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-yellow-300/20 via-yellow-300/40 to-yellow-300/20 -translate-y-1/2" />
+          {/* Mobile Vertical Line */}
+          <div className="md:hidden absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-yellow-300/20 via-yellow-300/40 to-yellow-300/20 -translate-x-1/2" />
+          
           {/* Step 1 */}
           <motion.div
+            ref={card1Ref}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col items-center bg-[#262222] rounded-2xl p-6 shadow-lg"
+            className="flex flex-col items-center bg-[#262222] rounded-2xl p-8 md:p-6 shadow-lg relative group hover:shadow-yellow-300/20 transition-all duration-300 mx-4 md:mx-0"
           >
-            <div className="flex items-center justify-center w-14 h-14 rounded-full bg-yellow-300 text-[#231F20] font-extrabold text-2xl mb-4">1</div>
-            <h3 className="text-xl font-bold text-yellow-200 mb-2 text-center">Sestanek s podjetjem</h3>
-            <p className="text-gray-200 text-center text-base">Najprej se dogovorimo za sestanek, kjer skupaj določimo ure dostave, prehranske preference in posebne želje vaših zaposlenih.</p>
+            <div className={`absolute inset-0 bg-gradient-to-br from-yellow-300/10 to-orange-500/10 rounded-2xl transition-opacity duration-500 ${card1InView ? 'opacity-100' : 'opacity-0'} md:group-hover:opacity-100`} />
+            <div className="flex items-center justify-center w-16 h-16 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 text-[#231F20] font-extrabold text-2xl mb-6 md:mb-4 relative group-hover:scale-110 transition-transform duration-300">
+              <span className="relative z-10">1</span>
+              <div className={`absolute inset-0 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 animate-pulse ${card1InView ? 'opacity-50' : 'opacity-0'} transition-opacity duration-500`} />
+            </div>
+            <h3 className={`text-2xl md:text-xl font-bold mb-3 md:mb-2 text-center transition-colors duration-500 ${card1InView ? 'text-yellow-300' : 'text-yellow-200'} md:group-hover:text-yellow-300`}>Sestanek s podjetjem</h3>
+            <p className={`text-center text-lg md:text-base transition-colors duration-500 ${card1InView ? 'text-gray-100' : 'text-gray-200'} md:group-hover:text-gray-100`}>Najprej se dogovorimo za sestanek, kjer skupaj določimo ure dostave, prehranske preference in posebne želje vaših zaposlenih.</p>
           </motion.div>
+
           {/* Step 2 */}
           <motion.div
+            ref={card2Ref}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col items-center bg-[#262222] rounded-2xl p-6 shadow-lg"
+            className="flex flex-col items-center bg-[#262222] rounded-2xl p-8 md:p-6 shadow-lg relative group hover:shadow-yellow-300/20 transition-all duration-300 mx-4 md:mx-0"
           >
-            <div className="flex items-center justify-center w-14 h-14 rounded-full bg-yellow-300 text-[#231F20] font-extrabold text-2xl mb-4">2</div>
-            <h3 className="text-xl font-bold text-yellow-200 mb-2 text-center">Prilagojen sistem za podjetje</h3>
-            <p className="text-gray-200 text-center text-base">Podjetju zagotovimo lasten, prilagojen spletni sistem, kjer lahko zaposleni enostavno izbirajo obroke.</p>
+            <div className={`absolute inset-0 bg-gradient-to-br from-yellow-300/10 to-orange-500/10 rounded-2xl transition-opacity duration-500 ${card2InView ? 'opacity-100' : 'opacity-0'} md:group-hover:opacity-100`} />
+            <div className="flex items-center justify-center w-16 h-16 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 text-[#231F20] font-extrabold text-2xl mb-6 md:mb-4 relative group-hover:scale-110 transition-transform duration-300">
+              <span className="relative z-10">2</span>
+              <div className={`absolute inset-0 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 animate-pulse ${card2InView ? 'opacity-50' : 'opacity-0'} transition-opacity duration-500`} />
+            </div>
+            <h3 className={`text-2xl md:text-xl font-bold mb-3 md:mb-2 text-center transition-colors duration-500 ${card2InView ? 'text-yellow-300' : 'text-yellow-200'} md:group-hover:text-yellow-300`}>Prilagojen sistem za podjetje</h3>
+            <p className={`text-center text-lg md:text-base transition-colors duration-500 ${card2InView ? 'text-gray-100' : 'text-gray-200'} md:group-hover:text-gray-100`}>Podjetju zagotovimo lasten, prilagojen spletni sistem, kjer lahko zaposleni enostavno izbirajo obroke.</p>
           </motion.div>
+
           {/* Step 3 */}
           <motion.div
+            ref={card3Ref}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col items-center bg-[#262222] rounded-2xl p-6 shadow-lg"
+            className="flex flex-col items-center bg-[#262222] rounded-2xl p-8 md:p-6 shadow-lg relative group hover:shadow-yellow-300/20 transition-all duration-300 mx-4 md:mx-0"
           >
-            <div className="flex items-center justify-center w-14 h-14 rounded-full bg-yellow-300 text-[#231F20] font-extrabold text-2xl mb-4">3</div>
-            <h3 className="text-xl font-bold text-yellow-200 mb-2 text-center">Tedenska izbira obrokov</h3>
-            <p className="text-gray-200 text-center text-base">Zaposleni vsak teden izberejo svoje želene obroke, mi pa poskrbimo za pravočasno in svežo dostavo.</p>
+            <div className={`absolute inset-0 bg-gradient-to-br from-yellow-300/10 to-orange-500/10 rounded-2xl transition-opacity duration-500 ${card3InView ? 'opacity-100' : 'opacity-0'} md:group-hover:opacity-100`} />
+            <div className="flex items-center justify-center w-16 h-16 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 text-[#231F20] font-extrabold text-2xl mb-6 md:mb-4 relative group-hover:scale-110 transition-transform duration-300">
+              <span className="relative z-10">3</span>
+              <div className={`absolute inset-0 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 animate-pulse ${card3InView ? 'opacity-50' : 'opacity-0'} transition-opacity duration-500`} />
+            </div>
+            <h3 className={`text-2xl md:text-xl font-bold mb-3 md:mb-2 text-center transition-colors duration-500 ${card3InView ? 'text-yellow-300' : 'text-yellow-200'} md:group-hover:text-yellow-300`}>Tedenska izbira obrokov</h3>
+            <p className={`text-center text-lg md:text-base transition-colors duration-500 ${card3InView ? 'text-gray-100' : 'text-gray-200'} md:group-hover:text-gray-100`}>Zaposleni vsak teden izberejo svoje želene obroke, mi pa poskrbimo za pravočasno in svežo dostavo.</p>
           </motion.div>
         </div>
       </section>
