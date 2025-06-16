@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { db } from '@/app/lib/firebase/firebase'
 import { collection, query, where, getDocs, addDoc, Timestamp, updateDoc, doc } from 'firebase/firestore'
 import { format, startOfWeek, addDays } from 'date-fns'
@@ -32,7 +32,7 @@ export default function AdminMenusPage() {
   // Form data for the current week
   const [formData, setFormData] = useState<Record<string, MenuOption[]>>({})
 
-  const fetchMenus = async () => {
+  const fetchMenus = useCallback(async () => {
     try {
       setLoading(true)
       setError(null)
@@ -89,11 +89,11 @@ export default function AdminMenusPage() {
     } finally {
       setLoading(false)
     }
-  }
+  }, [weekStart, weekDays])
 
   useEffect(() => {
     fetchMenus()
-  }, [selectedWeek])
+  }, [selectedWeek, fetchMenus])
 
   const handleInputChange = (date: string, optionIndex: number, value: string) => {
     setFormData(prev => ({

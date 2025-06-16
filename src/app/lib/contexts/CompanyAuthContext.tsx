@@ -42,7 +42,7 @@ export function CompanyAuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (company && !loading) {
       console.log('Company state updated, navigating to dashboard...')
-      router.replace('/menuapp/company/dashboard')
+      router.replace('/sistem/podjetje/admin')
     }
   }, [company, loading, router])
 
@@ -96,7 +96,7 @@ export function CompanyAuthProvider({ children }: { children: ReactNode }) {
   const logout = () => {
     sessionStorage.removeItem('company')
     setCompany(null)
-    router.replace('/menuapp')
+    router.replace('/sistem')
   }
 
   return (

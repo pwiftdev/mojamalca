@@ -40,7 +40,7 @@ export default function EmployeeLoginPage() {
       // Store employee info in sessionStorage for now
       const employee = { id: snapshot.docs[0].id, ...snapshot.docs[0].data() }
       sessionStorage.setItem('employee', JSON.stringify(employee))
-      router.replace('/menuapp/employee/dashboard')
+      router.replace('/sistem/zaposleni/narocanje')
     } catch (err) {
       setError('Napaka pri prijavi. Poskusite znova.')
       setIsLoading(false)

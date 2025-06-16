@@ -20,6 +20,7 @@ export default function AdminNarocilaPage() {
   const weekDays = Array.from({ length: 7 }, (_, i) => addDays(weekStart, i));
   const selectedDay = weekDays[selectedDayIdx];
   const selectedDayStr = format(selectedDay, "yyyy-MM-dd");
+  const weekStartStr = format(weekStart, "yyyy-MM-dd");
 
   // Fetch companies, menus, and orders for the selected week
   useEffect(() => {
@@ -27,7 +28,7 @@ export default function AdminNarocilaPage() {
     Promise.all([
       getDocs(collection(db, "companies")),
       getDocs(query(collection(db, "menus"), where("date", ">=", selectedDayStr), where("date", "<=", selectedDayStr))),
-      getDocs(query(collection(db, "orders"), where("weekStart", "==", selectedDayStr)))
+      getDocs(query(collection(db, "orders"), where("weekStart", "==", weekStartStr)))
     ]).then(([companiesSnap, menusSnap, ordersSnap]) => {
       setCompanies(companiesSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
       setMenus(menusSnap.docs.map(doc => ({ id: doc.id, ...doc.data() })));
@@ -35,7 +36,7 @@ export default function AdminNarocilaPage() {
       setLoading(false);
     });
     // eslint-disable-next-line
-  }, [selectedDayStr]);
+  }, [selectedDayStr, weekStartStr]);
 
   // For each company, get their menu for the selected day
   const getMenuForCompanyAndDay = (companyId: string) => {

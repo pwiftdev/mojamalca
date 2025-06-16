@@ -43,7 +43,7 @@ export default function AdminDashboardPage() {
           <h3 className="text-lg font-medium text-gray-900 mb-4">Hitri ukrepi</h3>
           <div className="space-y-4">
             <Link
-              href="/admin/companies/new"
+              href="/admin/podjetje/novo"
               className="block w-full px-4 py-2 text-sm font-medium text-center text-white bg-blue-600 rounded-md hover:bg-blue-700"
             >
               Dodaj novo podjetje

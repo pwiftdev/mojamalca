@@ -44,7 +44,7 @@ export default function CompanyLoginPage() {
   return (
     <div className="fixed inset-0 min-h-screen w-screen flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: 'rgb(35,31,32)' }}>
       <div className="sm:mx-auto sm:w-full sm:max-w-md flex flex-col items-center">
-        <Image src="/mojamalcalogonobg.png" alt="Moja Mal'ca Logo" width={180} height={60} className="mb-4" priority />
+        <Image src="/mojamalcalogonobg.png" alt="Moja Mal&apos;ca Logo" width={180} height={60} className="mb-4" priority />
         <h2 className="mt-2 text-center text-3xl font-extrabold text-yellow-400 drop-shadow">Prijava za podjetja</h2>
         <p className="mt-2 text-center text-white">Vnesite podatke za dostop do portala</p>
       </div>
@@ -105,6 +105,16 @@ export default function CompanyLoginPage() {
             </div>
           </form>
         </div>
+      </div>
+      {/* Switch to employee login */}
+      <div className="mt-6 text-center">
+        <button
+          type="button"
+          onClick={() => router.push('/sistem/zaposleni/login')}
+          className="inline-block px-4 py-2 text-sm font-medium text-yellow-500 border border-yellow-400 rounded hover:bg-yellow-50 hover:text-yellow-600 transition"
+        >
+          Prijava za zaposlene
+        </button>
       </div>
     </div>
   )

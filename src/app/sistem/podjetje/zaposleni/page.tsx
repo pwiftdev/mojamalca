@@ -5,6 +5,7 @@ import { db } from '@/app/lib/firebase/firebase'
 import { collection, query, where, getDocs, addDoc, deleteDoc, doc, orderBy } from 'firebase/firestore'
 import { useCompanyAuth } from '@/app/lib/contexts/CompanyAuthContext'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 interface Employee {
   id: string
@@ -16,6 +17,7 @@ interface Employee {
 
 export default function CompanyEmployeesPage() {
   const { company } = useCompanyAuth()
+  const router = useRouter()
   const [employees, setEmployees] = useState<Employee[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
@@ -96,6 +98,12 @@ export default function CompanyEmployeesPage() {
   return (
     <div className="min-h-screen w-full" style={{ backgroundColor: 'rgb(35,31,32)' }}>
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <button
+          onClick={() => router.push('/sistem/podjetje/admin')}
+          className="mb-8 px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-lg shadow transition"
+        >
+          Nazaj
+        </button>
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-2xl font-bold text-yellow-400 drop-shadow">
