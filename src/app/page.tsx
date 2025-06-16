@@ -362,6 +362,17 @@ export default function Home() {
         </div>
       </section>
 
+      {/* New Section for Partner Companies */}
+      <section className="w-full flex flex-col items-center justify-center py-12 bg-yellow-50 border-t border-b border-yellow-200">
+        <h2 className="text-2xl font-bold text-yellow-700 mb-4">Dostop za podjetja, ki sodelujejo z nami.</h2>
+        <a
+          href="/sistem"
+          className="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full shadow-lg text-lg transition"
+        >
+          Pojdi na sistem
+        </a>
+      </section>
+
       {/* Contact Section */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
