@@ -11,7 +11,7 @@ export default function Home() {
   const imageRef = useRef<HTMLImageElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [displayText, setDisplayText] = useState("");
-  const fullText = "Zdrava, sveža in kakovostna mal&apos;ca za podjetja";
+  const fullText = "Zdrava, sveža in kakovostna mal'ca za podjetja";
   const controls = useAnimation();
 
   // Add these refs and inView states for the cards
