@@ -97,12 +97,12 @@ export default function AdminNarocilaPage() {
         {loading ? (
           <div className="text-center text-gray-500">Nalaganje...</div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="flex flex-col gap-8">
             {companies.map(company => {
               const rows = getRowsForCompany(company);
               const total = rows.reduce((sum: number, row: { description: string; count: number }) => sum + row.count, 0);
               return (
-                <div key={company.id} className="bg-white rounded-xl shadow p-6">
+                <div key={company.id} className="bg-white rounded-xl shadow p-8 w-full">
                   <div className="mb-4">
                     <div className="text-xl font-bold text-yellow-600">{company.name}</div>
                     <div className="text-gray-700 text-sm">{company.address || 'Naslov ni vnešen'}</div>

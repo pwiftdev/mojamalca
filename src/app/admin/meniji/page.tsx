@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { db } from '@/app/lib/firebase/firebase'
 import { collection, query, where, getDocs, addDoc, Timestamp, updateDoc, doc } from 'firebase/firestore'
 import { format, startOfWeek, addDays } from 'date-fns'
 import { sl } from 'date-fns/locale'
+import { getDocs as getDocsFS } from 'firebase/firestore'
 
 interface MenuOption {
   description: string
@@ -17,6 +18,18 @@ interface Menu {
   companyId: string
 }
 
+const STALNE_OPCIJE_CATEGORY_ID = 'yWP8FgfZ3FTy5f4GPpRl'
+
+// Helper to fetch stalne opcije from menuBase
+async function fetchStalneOpcije() {
+  const menuBaseRef = collection(db, 'menuBase')
+  const snapshot = await getDocsFS(menuBaseRef)
+  return snapshot.docs
+    .map(doc => doc.data())
+    .filter(item => item.categoryId === STALNE_OPCIJE_CATEGORY_ID)
+    .map(item => ({ description: item.name || '' }))
+}
+
 export default function AdminMenusPage() {
   const [selectedWeek, setSelectedWeek] = useState<Date>(new Date())
   const [menus, setMenus] = useState<Menu[]>([])
@@ -26,19 +39,23 @@ export default function AdminMenusPage() {
   // Get the start of the week (Monday)
   const weekStart = startOfWeek(selectedWeek, { weekStartsOn: 1 })
   
-  // Generate array of weekdays (Monday to Friday)
-  const weekDays = Array.from({ length: 5 }, (_, i) => addDays(weekStart, i))
-
   // Form data for the current week
   const [formData, setFormData] = useState<Record<string, MenuOption[]>>({})
 
+  const lastInitializedWeek = useRef<string | null>(null)
+
   const fetchMenus = useCallback(async () => {
+    const weekStartStr = format(weekStart, 'yyyy-MM-dd')
+    if (lastInitializedWeek.current === weekStartStr) {
+      // Already initialized for this week, skip
+      return
+    }
+    lastInitializedWeek.current = weekStartStr
     try {
       setLoading(true)
       setError(null)
 
       const menusRef = collection(db, 'menus')
-      const weekStartStr = format(weekStart, 'yyyy-MM-dd')
       const weekEndStr = format(addDays(weekStart, 4), 'yyyy-MM-dd')
       
       console.log('Fetching menus for week:', {
@@ -68,6 +85,9 @@ export default function AdminMenusPage() {
         }
       }) as Menu[]
 
+      // Compute weekDays here
+      const weekDays = Array.from({ length: 5 }, (_, i) => addDays(weekStart, i))
+
       // Initialize form data with existing menus
       const initialFormData: Record<string, MenuOption[]> = {}
       weekDays.forEach(day => {
@@ -77,8 +97,14 @@ export default function AdminMenusPage() {
           description: ''
         }]
       })
-      setFormData(initialFormData)
+      // Only set formData if it is empty (first load or week change)
       setMenus(menuData)
+      setFormData(prev => {
+        if (Object.keys(prev).length === 0) {
+          return initialFormData
+        }
+        return prev
+      })
     } catch (error: any) {
       console.error('Error fetching menus:', error)
       if (error.code === 'failed-precondition') {
@@ -89,11 +115,11 @@ export default function AdminMenusPage() {
     } finally {
       setLoading(false)
     }
-  }, [weekStart, weekDays])
+  }, [weekStart])
 
   useEffect(() => {
     fetchMenus()
-  }, [selectedWeek, fetchMenus])
+  }, [weekStart])
 
   const handleInputChange = (date: string, optionIndex: number, value: string) => {
     setFormData(prev => ({
@@ -122,6 +148,17 @@ export default function AdminMenusPage() {
     setFormData(prev => ({
       ...prev,
       [date]: prev[date].filter((_, index) => index !== optionIndex)
+    }))
+  }
+
+  const handleAddStalneOpcije = async (dateStr: string) => {
+    const stalneOpcije = await fetchStalneOpcije()
+    setFormData(prev => ({
+      ...prev,
+      [dateStr]: [
+        ...prev[dateStr],
+        ...stalneOpcije
+      ]
     }))
   }
 
@@ -160,6 +197,9 @@ export default function AdminMenusPage() {
       setLoading(false)
     }
   }
+
+  // For rendering, compute weekDays here
+  const weekDays = Array.from({ length: 5 }, (_, i) => addDays(weekStart, i))
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -205,13 +245,22 @@ export default function AdminMenusPage() {
                 <h3 className="text-lg font-medium text-gray-900">
                   {dayName.charAt(0).toUpperCase() + dayName.slice(1)}, {dayNumber}
                 </h3>
-                <button
-                  type="button"
-                  onClick={() => addMenuOption(dateStr)}
-                  className="px-3 py-1 text-sm font-medium text-blue-600 bg-blue-50 rounded-md hover:bg-blue-100"
-                >
-                  + Dodaj možnost
-                </button>
+                <div className="flex gap-2 mt-2">
+                  <button
+                    type="button"
+                    onClick={() => addMenuOption(dateStr)}
+                    className="px-3 py-1 text-sm font-medium text-blue-600 bg-blue-50 rounded-md hover:bg-blue-100"
+                  >
+                    + Dodaj možnost
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleAddStalneOpcije(dateStr)}
+                    className="px-3 py-1 text-sm font-medium text-green-700 bg-green-50 rounded-md hover:bg-green-100"
+                  >
+                    Dodaj stalne opcije
+                  </button>
+                </div>
               </div>
               
               {formData[dateStr]?.map((option, optionIndex) => (

@@ -692,12 +692,20 @@ export default function Home() {
       {/* New Section for Partner Companies */}
       <section className="w-full flex flex-col items-center justify-center py-12 bg-yellow-50 border-t border-b border-yellow-200">
         <h2 className="text-2xl font-bold text-yellow-700 mb-4">Dostop za podjetja, ki sodelujejo z nami.</h2>
-        <a
-          href="/sistem"
-          className="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full shadow-lg text-lg transition"
-        >
-          Pojdi na sistem
-        </a>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <a
+            href="/sistem/podjetje/login"
+            className="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full shadow-lg text-lg transition text-center"
+          >
+            Dostop za podjetje
+          </a>
+          <a
+            href="/sistem/zaposleni/login"
+            className="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full shadow-lg text-lg transition text-center"
+          >
+            Dostop za zaposlene
+          </a>
+        </div>
       </section>
 
       {/* Contact Section */}
