@@ -64,7 +64,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-verification-code', // Add your Google Search Console verification code
+    // google: 'your-google-verification-code', // Add your Google Search Console verification code
   },
 };
 
@@ -180,6 +180,186 @@ export default function RootLayout({
                   "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "Način pakiranja in dostave se dogovori na sestanku z vsakim podjetjem posebej. Možnosti vključujejo posamezne papirnate škatle za vsakega zaposlenega, velike gastro posode za delitev jedi in druge prilagoditve po potrebi."
+                  }
+                }
+              ]
+            })
+          }}
+        />
+        
+        {/* Local Business Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LocalBusiness",
+              "name": "MojaMal'ca",
+              "description": "Dostavljamo okusne in uravnotežene malice za podjetja v Gorenjski regiji. Preprosto naročanje, hitra dostava, okusna malica.",
+              "url": "https://mojamalca.si",
+              "logo": "https://mojamalca.si/mojamalcalogonobg.png",
+              "image": "https://mojamalca.si/mojamalcalogonobg.png",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Ručigajeva cesta 5",
+                "addressLocality": "Kranj",
+                "postalCode": "4000",
+                "addressCountry": "SI"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 46.2389,
+                "longitude": 14.3556
+              },
+              "contactPoint": [
+                {
+                  "@type": "ContactPoint",
+                  "telephone": "+38669846626",
+                  "contactType": "customer service",
+                  "areaServed": "SI",
+                  "availableLanguage": "Slovenian"
+                },
+                {
+                  "@type": "ContactPoint", 
+                  "telephone": "+38670451777",
+                  "contactType": "customer service",
+                  "areaServed": "SI",
+                  "availableLanguage": "Slovenian"
+                }
+              ],
+              "email": "prodaja@mojamalca.si",
+              "openingHours": "Mo-Fr 08:00-17:00",
+              "priceRange": "€€",
+              "servesCuisine": ["Slovenian", "Mediterranean", "Healthy"],
+              "areaServed": [
+                {
+                  "@type": "Place",
+                  "name": "Gorenjska regija"
+                },
+                {
+                  "@type": "Place", 
+                  "name": "Ljubljana"
+                }
+              ],
+              "sameAs": [
+                "https://www.facebook.com/mojamalca",
+                "https://www.instagram.com/mojamalca"
+              ]
+            })
+          }}
+        />
+        
+        {/* Breadcrumb Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Domov",
+                  "item": "https://mojamalca.si"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Sistem za naročanje",
+                  "item": "https://mojamalca.si/sistem"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 3,
+                  "name": "Prijava podjetja",
+                  "item": "https://mojamalca.si/sistem/podjetje/login"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 4,
+                  "name": "Prijava zaposlenega",
+                  "item": "https://mojamalca.si/sistem/zaposleni/login"
+                }
+              ]
+            })
+          }}
+        />
+        
+        {/* Blog Posts Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Blog",
+              "name": "MojaMal'ca Blog",
+              "description": "Novice, nasveti in informacije o zdravih malicah za podjetja",
+              "url": "https://mojamalca.si",
+              "publisher": {
+                "@type": "Organization",
+                "name": "MojaMal'ca",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://mojamalca.si/mojamalcalogonobg.png"
+                }
+              },
+              "blogPost": [
+                {
+                  "@type": "BlogPosting",
+                  "headline": "Zakaj izbrati zdrave malice v podjetju?",
+                  "description": "Odkrijte prednosti zdravih malic za vaše zaposlene in kako izboljšajo produktivnost in zadovoljstvo.",
+                  "author": {
+                    "@type": "Organization",
+                    "name": "MojaMal'ca"
+                  },
+                  "datePublished": "2024-01-15",
+                  "dateModified": "2024-01-15",
+                  "publisher": {
+                    "@type": "Organization",
+                    "name": "MojaMal'ca"
+                  },
+                  "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://mojamalca.si"
+                  }
+                },
+                {
+                  "@type": "BlogPosting",
+                  "headline": "Organizirane malice v podjetju: Rešitev za podjetja v Gorenjski regiji",
+                  "description": "Preverite našo najnovejšo ponudbo svežih in okusnih obrokov za podjetja v Gorenjski regiji.",
+                  "author": {
+                    "@type": "Organization",
+                    "name": "MojaMal'ca"
+                  },
+                  "datePublished": "2024-01-20",
+                  "dateModified": "2024-01-20",
+                  "publisher": {
+                    "@type": "Organization",
+                    "name": "MojaMal'ca"
+                  },
+                  "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://mojamalca.si"
+                  }
+                },
+                {
+                  "@type": "BlogPosting",
+                  "headline": "Kako načrtujemo tedenski meni za podjetja",
+                  "description": "Spoznajte naš proces načrtovanja uravnoteženih menijev za podjetja in kako prilagajamo ponudbo potrebam zaposlenih.",
+                  "author": {
+                    "@type": "Organization",
+                    "name": "MojaMal'ca"
+                  },
+                  "datePublished": "2024-01-25",
+                  "dateModified": "2024-01-25",
+                  "publisher": {
+                    "@type": "Organization",
+                    "name": "MojaMal'ca"
+                  },
+                  "mainEntityOfPage": {
+                    "@type": "WebPage",
+                    "@id": "https://mojamalca.si"
                   }
                 }
               ]

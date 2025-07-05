@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
+import ReactMarkdown from "react-markdown";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,6 +26,115 @@ export default function Home() {
   const [contactLoading, setContactLoading] = useState(false);
   const [contactError, setContactError] = useState("");
   const [contactSuccess, setContactSuccess] = useState("");
+
+  // Blog post data
+  const blogPosts = [
+    {
+      title: "Zakaj izbrati zdrave malice v podjetju?",
+      excerpt: "Odkrijte prednosti zdravih malic za vaše zaposlene.",
+      icon: <HealthyIcon />,
+      content: (
+        <div>
+          <h2 className="text-2xl font-extrabold text-yellow-300 mb-4">Zakaj izbrati zdrave malice v podjetju?</h2>
+          <p className="mb-4">
+            V današnjem hitrem tempu življenja postaja kakovostna prehrana na delovnem mestu vse pomembnejša. Zaposleni, ki redno uživajo uravnotežene obroke, so bolj osredotočeni, produktivni in zadovoljni. Zato se vedno več podjetij odloča za organizirane in <b>zdrave malice za podjetja</b>.
+          </p>
+          <hr className="my-6 border-yellow-400" />
+          <h3 className="text-xl font-bold text-yellow-200 mb-2">Malice za podjetja – več kot le obrok</h3>
+          <p className="mb-2">Zdrava malica ni le trenutek odmora – je naložba v dobro počutje ekipe. Prednosti, ki jih prinašajo premišljeno pripravljene malice:</p>
+          <ul className="list-none space-y-2 mb-4">
+            <li className="flex items-center"><CheckIcon /> Več energije in koncentracije čez dan</li>
+            <li className="flex items-center"><CheckIcon /> Manj bolniških odsotnosti</li>
+            <li className="flex items-center"><CheckIcon /> Večje zadovoljstvo in motivacija zaposlenih</li>
+            <li className="flex items-center"><CheckIcon /> Prihranek časa in enostavna organizacija</li>
+          </ul>
+          <hr className="my-6 border-yellow-400" />
+          <h3 className="text-xl font-bold text-yellow-200 mb-2">Malice Kranj – lokalna rešitev za podjetja</h3>
+          <p className="mb-2">
+            Če vaše podjetje deluje v okolici Kranja, imamo pravo rešitev za vas. Pri <a href="https://mojamalca.si" className="text-yellow-300 underline hover:text-yellow-400" target="_blank" rel="noopener noreferrer">MojaMalca.si</a> nudimo raznoliko, sveže pripravljeno hrano, prilagojeno potrebam zaposlenih. Naša ponudba vključuje tudi vegetarijanske, brezglutenske in druge prehranske možnosti, z dostavo direktno na vašo lokacijo.
+          </p>
+          <p className="mb-4">Smo specialisti za <b>malice v Kranju</b> in okolici – zanesljivi, fleksibilni in vedno sveži.</p>
+          <hr className="my-6 border-yellow-400" />
+          <h3 className="text-xl font-bold text-yellow-200 mb-2">Zakaj izbrati Moja Malca?</h3>
+          <p>
+            Z večletnimi izkušnjami v pripravi <b>malic za podjetja</b>, razumemo, kaj zaposleni potrebujejo: okusen obrok, ki ne obteži, ampak napolni z energijo. Vašim ekipam dostavljamo malice, ki so pripravljene z mislijo na zdravje, okus in učinkovitost.
+          </p>
+        </div>
+      )
+    },
+    {
+      title: "Organizirane malice v podjetju: Rešitev za podjetja v Gorenjski regiji",
+      excerpt: "Preverite našo najnovejšo ponudbo svežih in okusnih obrokov!",
+      icon: <CalendarIcon />,
+      content: (
+        <div>
+          <h2 className="text-2xl font-extrabold text-yellow-300 mb-4">Organizirane malice v podjetju: Rešitev za podjetja v Gorenjski regiji</h2>
+          <p className="mb-4">
+            V sodobnem tempu dela je čas ena najdragocenejših dobrin. Zato se vse več podjetij odloča za organizirane malice za zaposlene, ki ne le prihranijo čas, temveč tudi izboljšajo zadovoljstvo in učinkovitost ekipe.
+          </p>
+          <p className="mb-4">
+            Z rešitvijo, kot jo ponuja <a href="https://mojamalca.si" className="text-yellow-300 underline hover:text-yellow-400" target="_blank" rel="noopener noreferrer">MojaMalca.si</a>, lahko podjetja svojim zaposlenim omogočijo preprosto naročanje obrokov – hitro, digitalno in brez stresa.
+          </p>
+          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Pametno naročanje prek aplikacije</h3>
+          <p className="mb-2">Pri Moja Malca smo razvili sistem, ki poenostavi celoten proces. Zaposleni si vsak teden vnaprej prek spletne aplikacije izberejo malice za posamezne dni. Tako vnaprej vemo, kaj in koliko pripraviti – vi pa se izognete višku hrane ali organizacijskim zapletom.</p>
+          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Prilagodljive malice, dostavljene na vrata podjetja</h3>
+          <p className="mb-2">Vsi obroki so skrbno pripravljeni, sveži in pakirani glede na potrebe podjetja. Po dogovoru lahko:</p>
+          <ul className="list-disc pl-6 mb-4 text-gray-200">
+            <li>naročite individualno pakiranje za vsakega zaposlenega</li>
+            <li>izberete skupinsko dostavo v večjih embalažah</li>
+            <li>vključite prehranske preference ali omejitve (npr. vegetarijansko, brez glutena itd.)</li>
+          </ul>
+          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Zakaj podjetja izberejo organizirane malice?</h3>
+          <ul className="list-none space-y-2 mb-4">
+            <li className="flex items-center"><CheckIcon /> Prihranek časa pri organizaciji prehrane</li>
+            <li className="flex items-center"><CheckIcon /> Večja zanesljivost in manj stresa za zaposlene</li>
+            <li className="flex items-center"><CheckIcon /> Enostavno upravljanje naročil prek aplikacije</li>
+            <li className="flex items-center"><CheckIcon /> Fleksibilno pakiranje in dostava</li>
+            <li className="flex items-center"><CheckIcon /> Sveža in uravnotežena hrana, ki podpira delovni ritem</li>
+          </ul>
+          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Poskrbite za prehrano – brez dodatnega dela</h3>
+          <p>
+            Če želite svojim zaposlenim ponuditi nekaj več, a brez dodatnega napora, so malice za podjetja odlična rešitev. Z našim sistemom postane vsakodnevna prehrana preprosta, organizirana in prilagojena vašim željam.
+          </p>
+        </div>
+      )
+    },
+    {
+      title: "Kako načrtujemo tedenski meni za podjetja",
+      excerpt: "Spoznajte naš proces načrtovanja uravnoteženih menijev.",
+      icon: <ChefHatIcon />,
+      content: (
+        <div>
+          <h2 className="text-2xl font-extrabold text-yellow-300 mb-4">Kako načrtujemo tedenski meni za podjetja</h2>
+          <p className="mb-4">
+            Pri zagotavljanju kakovostnih malic za podjetja ni pomembna le dostava in okus hrane, temveč tudi premišljeno načrtovan meni. V podjetju Moja Malca verjamemo, da mora biti prehrana v službi raznolika, uravnotežena in prilagojena dejanskim željam zaposlenih.
+          </p>
+          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Naš sistem: fiksna osnova + dnevna rotacija</h3>
+          <p className="mb-2">Da bi dosegli idealno ravnovesje med stabilnostjo in pestrostjo, naš tedenski meni temelji na dveh ključnih elementih:</p>
+          <ul className="list-disc pl-6 mb-4 text-gray-200">
+            <li><b>7–10 fiksnih obrokov mesečno:</b> To so priljubljene in preverjene jedi, ki so na voljo vsak dan. Zaposleni se lahko vedno zanesejo na svoje favorite.</li>
+            <li><b>Dnevna rotacija 3 obrokov:</b> Vsak dan dodamo tri nova jedilnika, ki se dnevno menjajo. S tem ohranjamo raznolikost, sezonskost in omogočimo odkrivanje novih okusov.</li>
+          </ul>
+          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Načrtovanje na podlagi povratnih informacij</h3>
+          <p className="mb-2">Naš meni ni statičen. Redno analiziramo povratne informacije uporabnikov, spremljamo ocene in predloge, ter na podlagi analize:</p>
+          <ul className="list-disc pl-6 mb-4 text-gray-200">
+            <li>prilagajamo sestavo dnevne rotacije</li>
+            <li>odstranjujemo manj priljubljene jedi</li>
+            <li>fiksiramo najbolj priljubljene obroke v mesečni osnovi</li>
+          </ul>
+          <p className="mb-4">S tem zagotavljamo, da so malice ne le okusne, ampak tudi vedno bolj prilagojene dejanskim željam podjetij in zaposlenih.</p>
+          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Prednosti načrtovanega menija</h3>
+          <ul className="list-none space-y-2 mb-4">
+            <li className="flex items-center"><CheckIcon /> Večja raznolikost brez organizacijskih zapletov</li>
+            <li className="flex items-center"><CheckIcon /> Preverjena kakovost in stabilna ponudba</li>
+            <li className="flex items-center"><CheckIcon /> Možnost izbire za različne prehranske potrebe</li>
+            <li className="flex items-center"><CheckIcon /> Stalen napredek na podlagi mnenj uporabnikov</li>
+          </ul>
+        </div>
+      )
+    }
+  ];
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -529,6 +639,43 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Blog Section */}
+      <section className="w-full max-w-3xl mx-auto mt-12 mb-8 bg-[#262222] rounded-2xl shadow-lg p-4">
+        <h2 className="text-2xl md:text-3xl font-extrabold text-yellow-300 mb-4 text-center">Malice, zdravi obroki in novice</h2>
+        <ul className="space-y-3">
+          {blogPosts.map((post, idx) => (
+            <li key={idx} className="border border-gray-700 rounded-lg overflow-hidden transition-shadow hover:shadow-xl bg-[#231F20]">
+              <button
+                className="w-full text-left px-4 py-3 flex items-center gap-3 focus:outline-none group"
+                onClick={() => setExpandedIndex(expandedIndex === idx ? null : idx)}
+                aria-expanded={expandedIndex === idx}
+              >
+                <span className="flex-shrink-0">{post.icon}</span>
+                <div className="flex-1 min-w-0">
+                  <div className="text-base md:text-lg font-bold text-yellow-200 group-hover:text-yellow-300 transition-colors">{post.title}</div>
+                  <div className="text-gray-400 text-xs mt-0.5 line-clamp-2">{post.excerpt}</div>
+                </div>
+                <span className={`ml-3 transition-transform duration-300 ${expandedIndex === idx ? 'rotate-90' : ''}`}>▶</span>
+              </button>
+              {expandedIndex === idx && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, ease: 'easeOut' }}
+                  className="px-4 py-3 border-t border-gray-700 text-gray-200 bg-[#2d292a]"
+                >
+                  {typeof post.content === 'string' ? (
+                    <ReactMarkdown className="prose prose-invert max-w-none text-gray-200">{post.content}</ReactMarkdown>
+                  ) : (
+                    post.content
+                  )}
+                </motion.div>
+              )}
+            </li>
+          ))}
+        </ul>
+      </section>
+
       {/* FAQ Section */}
       <section className="w-full max-w-4xl mx-auto px-4 py-16">
         <motion.div
@@ -717,7 +864,7 @@ export default function Home() {
         className="w-full max-w-2xl bg-[#2d292a] rounded-2xl shadow-xl p-8 mt-10 flex flex-col items-center"
       >
         <h2 className="text-3xl font-extrabold text-yellow-300 mb-4">Oddaj povpraševanje</h2>
-        <p className="text-gray-200 mb-6 text-center">Za naročila, povpraševanja ali dodatne informacije izpolnite spodnji obrazec ali nam pišite na <a href="mailto:info@mojamalca.si" className="underline text-yellow-300">info@mojamalca.si</a>.</p>
+        <p className="text-gray-200 mb-6 text-center">Za naročila, povpraševanja ali dodatne informacije izpolnite spodnji obrazec ali nam pišite na <a href="mailto:prodaja@mojamalca.si" className="underline text-yellow-300">prodaja@mojamalca.si</a>.</p>
         <form className="w-full flex flex-col gap-4" onSubmit={async (e) => {
           e.preventDefault();
           setContactLoading(true);
@@ -881,3 +1028,18 @@ export default function Home() {
     </main>
   );
 }
+
+const CheckIcon = () => (
+  <svg className="w-5 h-5 text-green-400 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" /></svg>
+);
+
+// Topic-related icons
+const HealthyIcon = () => (
+  <svg className="w-8 h-8 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 21C12 21 4 13.5 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.5 16 21 16 21H12Z" /></svg>
+);
+const CalendarIcon = () => (
+  <svg className="w-8 h-8 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2" strokeWidth="2" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 2v4M8 2v4M3 10h18" /></svg>
+);
+const ChefHatIcon = () => (
+  <svg className="w-8 h-8 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 10a4 4 0 014-4h8a4 4 0 014 4v2a4 4 0 01-4 4H8a4 4 0 01-4-4v-2z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 18h8" /></svg>
+);
