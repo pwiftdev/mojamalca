@@ -104,9 +104,8 @@ export default function RootLayout({
   return (
     <html lang="sl">
       <head>
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" href="/favicon-32x32.png" />
-        <link rel="apple-touch-icon" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         <meta name="image" content="https://mojamalca.si/mojamalcalogonobg.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -166,6 +165,19 @@ export default function RootLayout({
                 "https://www.facebook.com/mojamalca",
                 "https://www.instagram.com/mojamalca"
               ]
+            })
+          }}
+        />
+        {/* Organization Structured Data for favicon in Google search */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "MojaMal'ca",
+              "url": "https://mojamalca.si",
+              "logo": "https://mojamalca.si/favicon.ico"
             })
           }}
         />
