@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://mojamalca.si/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://mojamalca.si/mojamalcalogonobg.png</image:loc>
+      <image:title>MojaMal'ca - Zdrava in sveža malica za podjetja</image:title>
+      <image:caption>Logo MojaMal'ca - dostava zdravih malic za podjetja v Gorenjski regiji</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mojamalca.si/photo1.jpg</image:loc>
+      <image:title>Sveže in okusne malice za podjetja</image:title>
+      <image:caption>Prikaz svežih in okusnih malic, ki jih dostavljamo podjetjem</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mojamalca.si/photo2.jpg</image:loc>
+      <image:title>Zdrave malice dostavljene v podjetje</image:title>
+      <image:caption>Zdrave malice, ki so bile dostavljene v podjetje</image:caption>
+    </image:image>
+  </url>
+</urlset> 

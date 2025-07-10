@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Allow crawling of images
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.gif
+Allow: /*.webp
+Allow: /*.svg
+
+# Sitemap location
+Sitemap: https://mojamalca.si/sitemap.xml
+Sitemap: https://mojamalca.si/image-sitemap.xml 

@@ -42,6 +42,21 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: 'MojaMal\'ca - Zdrava in sveža malica za podjetja',
+        type: 'image/png',
+      },
+      {
+        url: '/photo1.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Sveže in okusne malice za podjetja',
+        type: 'image/jpeg',
+      },
+      {
+        url: '/photo2.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Zdrave malice dostavljene v podjetje',
+        type: 'image/jpeg',
       },
     ],
   },
@@ -49,7 +64,20 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'MojaMal\'ca - Zdrava in sveža malica za podjetja | Gorenjska Regija',
     description: 'Dostavljamo okusne in uravnotežene malice za podjetja v Gorenjski regiji. Preprosto naročanje, hitra dostava, okusna malica.',
-    images: ['/mojamalcalogonobg.png'],
+    images: [
+      {
+        url: '/mojamalcalogonobg.png',
+        alt: 'MojaMal\'ca - Zdrava in sveža malica za podjetja',
+        width: 1200,
+        height: 630,
+      },
+      {
+        url: '/photo1.jpg',
+        alt: 'Sveže in okusne malice za podjetja',
+        width: 1200,
+        height: 800,
+      },
+    ],
     creator: '@mojamalca',
   },
   robots: {
@@ -77,6 +105,14 @@ export default function RootLayout({
     <html lang="sl">
       <head>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/mojamalcalogonobg.png" />
+        <meta name="image" content="https://mojamalca.si/mojamalcalogonobg.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/png" />
+        <meta name="twitter:image:width" content="1200" />
+        <meta name="twitter:image:height" content="630" />
         {/* Structured Data for Business */}
         <script
           type="application/ld+json"
