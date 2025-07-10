@@ -105,8 +105,8 @@ export default function RootLayout({
     <html lang="sl">
       <head>
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/mojamalcalogonobg.png" />
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" />
+        <link rel="apple-touch-icon" href="/favicon-32x32.png" />
         <meta name="image" content="https://mojamalca.si/mojamalcalogonobg.png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
