@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import ReactMarkdown from "react-markdown";
+import { db } from "@/app/lib/firebase/firebase";
+import { collection, query, orderBy, onSnapshot } from "firebase/firestore";
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,7 +14,7 @@ export default function Home() {
   const imageRef = useRef<HTMLImageElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [displayText, setDisplayText] = useState("");
-  const fullText = "Zdrava, sveža in kakovostna mal'ca za podjetja";
+  const fullText = "Dostava hrane na vaš dom Kranj. Malice za podjetja.";
   const controls = useAnimation();
 
   // Add these refs and inView states for the cards
@@ -210,6 +212,7 @@ export default function Home() {
           </Link>
           {/* Desktop Nav */}
           <nav className="hidden lg:flex gap-6 lg:gap-10 text-lg font-extrabold uppercase tracking-wide items-center">
+            <Link href="#meni" className="text-yellow-300 hover:text-yellow-400 transition-colors font-extrabold uppercase tracking-wide">MENI</Link>
             <Link href="#podjetja" className="text-yellow-300 hover:text-yellow-400 transition-colors font-extrabold uppercase tracking-wide">Podjetja</Link>
             <Link href="#kontakt" className="text-yellow-300 hover:text-yellow-400 transition-colors font-extrabold uppercase tracking-wide">Povpraševanje</Link>
             
@@ -278,6 +281,7 @@ export default function Home() {
           {menuOpen && (
             <div className="fixed inset-0 w-screen h-screen bg-black/85 backdrop-blur-md flex items-center justify-center z-40 transition-all duration-300">
               <nav className="flex flex-col items-center justify-center gap-10 text-3xl font-extrabold uppercase tracking-wide text-yellow-300">
+                <Link href="#meni" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition-colors">MENI</Link>
                 <Link href="#podjetja" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition-colors">Podjetja</Link>
                 <Link href="#kontakt" onClick={() => setMenuOpen(false)} className="hover:text-yellow-400 transition-colors">Povpraševanje</Link>
                 
@@ -367,7 +371,7 @@ export default function Home() {
             </motion.span>
           </motion.h1>
           <p className="text-lg md:text-xl text-gray-200 text-center max-w-2xl mb-8 drop-shadow">
-            Dostavljamo okusne in uravnotežene obroke za mala in velika podjetja po Gorenjski. Preprosto naročanje, hitra dostava in vedno nasmejana ekipa!
+            Najboljše pice, in uravnotežene, sveže malice na vaš dom. Catering ponudba malic za mala in velika podjetja.
           </p>
           <Link href="#kontakt" className="relative group">
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-orange-400 opacity-90 blur-[1px] group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-energy-1" />
@@ -423,6 +427,20 @@ export default function Home() {
           <h2 className="text-2xl font-extrabold text-yellow-300 mb-2">Kakovostno</h2>
           <p className="text-gray-200">Kuhamo z ljubeznijo in skrbjo za vaše zdravje in dobro počutje.</p>
         </motion.div>
+      </section>
+
+      {/* Dostava na dom: Meni Section */}
+      <section id="meni" className="w-full max-w-4xl mx-auto py-12 px-4">
+        <h2 className="text-3xl md:text-4xl font-extrabold text-yellow-300 text-center mb-8">Dostava na dom: Meni</h2>
+        <MenuDeliveryList />
+      </section>
+
+      {/* Call to Order Section */}
+      <section className="w-full max-w-4xl mx-auto py-8 px-4 flex flex-col items-center">
+        <h3 className="text-2xl md:text-3xl font-extrabold text-yellow-300 mb-4 text-center">Pokliči nas za naročilo</h3>
+        <a href="tel:069846626" className="text-2xl md:text-3xl font-bold text-white bg-gradient-to-r from-yellow-300 to-orange-400 px-8 py-4 rounded-full shadow-lg hover:from-yellow-400 hover:to-orange-500 transition mb-2">
+          069 846 626
+        </a>
       </section>
 
       {/* For Companies Section */}
@@ -554,89 +572,6 @@ export default function Home() {
             </motion.button>
           </Link>
         </motion.div>
-      </section>
-
-      {/* How it works Section */}
-      <section id="kako" className="w-full max-w-4xl py-14 mx-auto relative overflow-hidden">
-        {/* Background Circles */}
-        <div className="absolute inset-0 z-0">
-          {/* Orbiting circles */}
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            {/* First orbit */}
-            <div className="absolute w-16 h-16 rounded-full bg-orange-500/30 blur-xl animate-orbit-1" />
-            <div className="absolute w-12 h-12 rounded-full bg-yellow-400/30 blur-xl animate-orbit-1" style={{ animationDelay: '-5s' }} />
-            
-            {/* Second orbit */}
-            <div className="absolute w-14 h-14 rounded-full bg-yellow-300/30 blur-xl animate-orbit-2" />
-            <div className="absolute w-16 h-16 rounded-full bg-orange-400/30 blur-xl animate-orbit-2" style={{ animationDelay: '-8s' }} />
-            
-            {/* Third orbit */}
-            <div className="absolute w-12 h-12 rounded-full bg-orange-300/30 blur-xl animate-orbit-3" />
-            <div className="absolute w-14 h-14 rounded-full bg-yellow-400/30 blur-xl animate-orbit-3" style={{ animationDelay: '-12s' }} />
-          </div>
-        </div>
-
-        <h2 className="text-3xl md:text-4xl font-extrabold text-yellow-300 text-center mb-10 relative z-10">Kako poteka poslovanje z nami?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-12 relative px-4 md:px-0 z-10">
-          {/* Connecting Lines */}
-          <div className="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-yellow-300/20 via-yellow-300/40 to-yellow-300/20 -translate-y-1/2" />
-          {/* Mobile Vertical Line */}
-          <div className="md:hidden absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-yellow-300/20 via-yellow-300/40 to-yellow-300/20 -translate-x-1/2" />
-          
-          {/* Step 1 */}
-          <motion.div
-            ref={card1Ref}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col items-center bg-[#262222] rounded-2xl p-8 md:p-6 shadow-lg relative group hover:shadow-yellow-300/20 transition-all duration-300 mx-4 md:mx-0"
-          >
-            <div className={`absolute inset-0 bg-gradient-to-br from-yellow-300/10 to-orange-500/10 rounded-2xl transition-opacity duration-500 ${card1InView ? 'opacity-100' : 'opacity-0'} md:group-hover:opacity-100`} />
-            <div className="flex items-center justify-center w-16 h-16 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 text-[#231F20] font-extrabold text-2xl mb-6 md:mb-4 relative group-hover:scale-110 transition-transform duration-300">
-              <span className="relative z-10">1</span>
-              <div className={`absolute inset-0 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 animate-pulse ${card1InView ? 'opacity-50' : 'opacity-0'} transition-opacity duration-500`} />
-            </div>
-            <h3 className={`text-2xl md:text-xl font-bold mb-3 md:mb-2 text-center transition-colors duration-500 ${card1InView ? 'text-yellow-300' : 'text-yellow-200'} md:group-hover:text-yellow-300`}>Sestanek s podjetjem</h3>
-            <p className={`text-center text-lg md:text-base transition-colors duration-500 ${card1InView ? 'text-gray-100' : 'text-gray-200'} md:group-hover:text-gray-100`}>Najprej se dogovorimo za sestanek, kjer skupaj določimo ure dostave, prehranske preference in posebne želje vaših zaposlenih.</p>
-          </motion.div>
-
-          {/* Step 2 */}
-          <motion.div
-            ref={card2Ref}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col items-center bg-[#262222] rounded-2xl p-8 md:p-6 shadow-lg relative group hover:shadow-yellow-300/20 transition-all duration-300 mx-4 md:mx-0"
-          >
-            <div className={`absolute inset-0 bg-gradient-to-br from-yellow-300/10 to-orange-500/10 rounded-2xl transition-opacity duration-500 ${card2InView ? 'opacity-100' : 'opacity-0'} md:group-hover:opacity-100`} />
-            <div className="flex items-center justify-center w-16 h-16 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 text-[#231F20] font-extrabold text-2xl mb-6 md:mb-4 relative group-hover:scale-110 transition-transform duration-300">
-              <span className="relative z-10">2</span>
-              <div className={`absolute inset-0 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 animate-pulse ${card2InView ? 'opacity-50' : 'opacity-0'} transition-opacity duration-500`} />
-            </div>
-            <h3 className={`text-2xl md:text-xl font-bold mb-3 md:mb-2 text-center transition-colors duration-500 ${card2InView ? 'text-yellow-300' : 'text-yellow-200'} md:group-hover:text-yellow-300`}>Prilagojen sistem za podjetje</h3>
-            <p className={`text-center text-lg md:text-base transition-colors duration-500 ${card2InView ? 'text-gray-100' : 'text-gray-200'} md:group-hover:text-gray-100`}>Podjetju zagotovimo lasten, prilagojen spletni sistem, kjer lahko zaposleni enostavno izbirajo obroke.</p>
-          </motion.div>
-
-          {/* Step 3 */}
-          <motion.div
-            ref={card3Ref}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-col items-center bg-[#262222] rounded-2xl p-8 md:p-6 shadow-lg relative group hover:shadow-yellow-300/20 transition-all duration-300 mx-4 md:mx-0"
-          >
-            <div className={`absolute inset-0 bg-gradient-to-br from-yellow-300/10 to-orange-500/10 rounded-2xl transition-opacity duration-500 ${card3InView ? 'opacity-100' : 'opacity-0'} md:group-hover:opacity-100`} />
-            <div className="flex items-center justify-center w-16 h-16 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 text-[#231F20] font-extrabold text-2xl mb-6 md:mb-4 relative group-hover:scale-110 transition-transform duration-300">
-              <span className="relative z-10">3</span>
-              <div className={`absolute inset-0 rounded-full bg-gradient-to-br from-yellow-300 to-orange-500 animate-pulse ${card3InView ? 'opacity-50' : 'opacity-0'} transition-opacity duration-500`} />
-            </div>
-            <h3 className={`text-2xl md:text-xl font-bold mb-3 md:mb-2 text-center transition-colors duration-500 ${card3InView ? 'text-yellow-300' : 'text-yellow-200'} md:group-hover:text-yellow-300`}>Tedenska izbira obrokov</h3>
-            <p className={`text-center text-lg md:text-base transition-colors duration-500 ${card3InView ? 'text-gray-100' : 'text-gray-200'} md:group-hover:text-gray-100`}>Zaposleni vsak teden izberejo svoje želene obroke, mi pa poskrbimo za pravočasno in svežo dostavo.</p>
-          </motion.div>
-        </div>
       </section>
 
       {/* Blog Section */}
@@ -1043,3 +978,78 @@ const CalendarIcon = () => (
 const ChefHatIcon = () => (
   <svg className="w-8 h-8 text-yellow-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 10a4 4 0 014-4h8a4 4 0 014 4v2a4 4 0 01-4 4H8a4 4 0 01-4-4v-2z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 18h8" /></svg>
 );
+
+function MenuDeliveryList() {
+  const [menus, setMenus] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const q = query(collection(db, "deliveryMenu"), orderBy("createdAt", "desc"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const menuData = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+      setMenus(menuData);
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  // Group menus by category
+  const groupedMenus = menus.reduce((acc, menu) => {
+    const category = menu.category || "Drugo";
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(menu);
+    return acc;
+  }, {} as Record<string, any[]>);
+
+  if (loading) {
+    return (
+      <div className="text-center py-8">
+        <div className="text-yellow-300">Nalaganje menija...</div>
+      </div>
+    );
+  }
+
+  if (menus.length === 0) {
+    return (
+      <div className="text-center py-8">
+        <div className="text-gray-400">Trenutno ni na voljo nobenih menijev.</div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-8">
+      {Object.entries(groupedMenus).map(([category, categoryMenus]) => (
+        <div key={category}>
+          <h3 className="text-2xl font-bold text-yellow-200 mb-4 text-center">
+            {category}
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {categoryMenus.map((menu) => (
+              <div
+                key={menu.id}
+                className="bg-[#262222] rounded-2xl shadow-lg p-6 flex flex-col items-start"
+              >
+                <h3 className="text-xl font-bold text-yellow-200 mb-2">
+                  {menu.name}
+                </h3>
+                {menu.description && (
+                  <p className="text-gray-300 mb-2">{menu.description}</p>
+                )}
+                <div className="text-yellow-300 font-bold text-lg mt-auto">
+                  {menu.price}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}

@@ -11,6 +11,7 @@ const navigation = [
   { name: 'Meniji', href: '/admin/meniji' },
   { name: 'Naročila', href: '/admin/narocila' },
   { name: 'Baza menijev', href: '/admin/baza-menijev' },
+  { name: 'Stalni meniji spletna stran', href: '/admin/delivery-menu' },
 ]
 
 export default function AdminLayout({
