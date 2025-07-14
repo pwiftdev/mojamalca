@@ -1031,7 +1031,7 @@ function MenuDeliveryList() {
             {category}
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {categoryMenus.map((menu) => (
+            {(categoryMenus as any[]).map((menu: any) => (
               <div
                 key={menu.id}
                 className="bg-[#262222] rounded-2xl shadow-lg p-6 flex flex-col items-start"
