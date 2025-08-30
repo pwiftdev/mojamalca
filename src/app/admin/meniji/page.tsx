@@ -119,7 +119,7 @@ export default function AdminMenusPage() {
 
   useEffect(() => {
     fetchMenus()
-  }, [weekStart])
+  }, [weekStart, fetchMenus])
 
   const handleInputChange = (date: string, optionIndex: number, value: string) => {
     setFormData(prev => ({

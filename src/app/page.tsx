@@ -37,12 +37,12 @@ export default function Home() {
       icon: <HealthyIcon />,
       content: (
         <div>
-          <h2 className="text-2xl font-extrabold text-yellow-300 mb-4">Zakaj izbrati zdrave malice v podjetju?</h2>
+          <h2 className="text-2xl font-extrabold text-[#231F20] mb-4">Zakaj izbrati zdrave malice v podjetju?</h2>
           <p className="mb-4">
             V današnjem hitrem tempu življenja postaja kakovostna prehrana na delovnem mestu vse pomembnejša. Zaposleni, ki redno uživajo uravnotežene obroke, so bolj osredotočeni, produktivni in zadovoljni. Zato se vedno več podjetij odloča za organizirane in <b>zdrave malice za podjetja</b>.
           </p>
           <hr className="my-6 border-yellow-400" />
-          <h3 className="text-xl font-bold text-yellow-200 mb-2">Malice za podjetja – več kot le obrok</h3>
+          <h3 className="text-xl font-bold text-[#231F20] mb-2">Malice za podjetja – več kot le obrok</h3>
           <p className="mb-2">Zdrava malica ni le trenutek odmora – je naložba v dobro počutje ekipe. Prednosti, ki jih prinašajo premišljeno pripravljene malice:</p>
           <ul className="list-none space-y-2 mb-4">
             <li className="flex items-center"><CheckIcon /> Več energije in koncentracije čez dan</li>
@@ -51,13 +51,13 @@ export default function Home() {
             <li className="flex items-center"><CheckIcon /> Prihranek časa in enostavna organizacija</li>
           </ul>
           <hr className="my-6 border-yellow-400" />
-          <h3 className="text-xl font-bold text-yellow-200 mb-2">Malice Kranj – lokalna rešitev za podjetja</h3>
+          <h3 className="text-xl font-bold text-[#231F20] mb-2">Malice Kranj – lokalna rešitev za podjetja</h3>
           <p className="mb-2">
             Če vaše podjetje deluje v okolici Kranja, imamo pravo rešitev za vas. Pri <a href="https://mojamalca.si" className="text-yellow-300 underline hover:text-yellow-400" target="_blank" rel="noopener noreferrer">MojaMalca.si</a> nudimo raznoliko, sveže pripravljeno hrano, prilagojeno potrebam zaposlenih. Naša ponudba vključuje tudi vegetarijanske, brezglutenske in druge prehranske možnosti, z dostavo direktno na vašo lokacijo.
           </p>
           <p className="mb-4">Smo specialisti za <b>malice v Kranju</b> in okolici – zanesljivi, fleksibilni in vedno sveži.</p>
           <hr className="my-6 border-yellow-400" />
-          <h3 className="text-xl font-bold text-yellow-200 mb-2">Zakaj izbrati Moja Malca?</h3>
+          <h3 className="text-xl font-bold text-[#231F20] mb-2">Zakaj izbrati Moja Malca?</h3>
           <p>
             Z večletnimi izkušnjami v pripravi <b>malic za podjetja</b>, razumemo, kaj zaposleni potrebujejo: okusen obrok, ki ne obteži, ampak napolni z energijo. Vašim ekipam dostavljamo malice, ki so pripravljene z mislijo na zdravje, okus in učinkovitost.
           </p>
@@ -70,23 +70,23 @@ export default function Home() {
       icon: <CalendarIcon />,
       content: (
         <div>
-          <h2 className="text-2xl font-extrabold text-yellow-300 mb-4">Organizirane malice v podjetju: Rešitev za podjetja v Gorenjski regiji</h2>
+          <h2 className="text-2xl font-extrabold text-[#231F20] mb-4">Organizirane malice v podjetju: Rešitev za podjetja v Gorenjski regiji</h2>
           <p className="mb-4">
             V sodobnem tempu dela je čas ena najdragocenejših dobrin. Zato se vse več podjetij odloča za organizirane malice za zaposlene, ki ne le prihranijo čas, temveč tudi izboljšajo zadovoljstvo in učinkovitost ekipe.
           </p>
           <p className="mb-4">
             Z rešitvijo, kot jo ponuja <a href="https://mojamalca.si" className="text-yellow-300 underline hover:text-yellow-400" target="_blank" rel="noopener noreferrer">MojaMalca.si</a>, lahko podjetja svojim zaposlenim omogočijo preprosto naročanje obrokov – hitro, digitalno in brez stresa.
           </p>
-          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Pametno naročanje prek aplikacije</h3>
+          <h3 className="text-xl font-bold text-[#231F20] mb-2 mt-6">Pametno naročanje prek aplikacije</h3>
           <p className="mb-2">Pri Moja Malca smo razvili sistem, ki poenostavi celoten proces. Zaposleni si vsak teden vnaprej prek spletne aplikacije izberejo malice za posamezne dni. Tako vnaprej vemo, kaj in koliko pripraviti – vi pa se izognete višku hrane ali organizacijskim zapletom.</p>
-          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Prilagodljive malice, dostavljene na vrata podjetja</h3>
+          <h3 className="text-xl font-bold text-[#231F20] mb-2 mt-6">Prilagodljive malice, dostavljene na vrata podjetja</h3>
           <p className="mb-2">Vsi obroki so skrbno pripravljeni, sveži in pakirani glede na potrebe podjetja. Po dogovoru lahko:</p>
           <ul className="list-disc pl-6 mb-4 text-gray-200">
             <li>naročite individualno pakiranje za vsakega zaposlenega</li>
             <li>izberete skupinsko dostavo v večjih embalažah</li>
             <li>vključite prehranske preference ali omejitve (npr. vegetarijansko, brez glutena itd.)</li>
           </ul>
-          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Zakaj podjetja izberejo organizirane malice?</h3>
+          <h3 className="text-xl font-bold text-[#231F20] mb-2 mt-6">Zakaj podjetja izberejo organizirane malice?</h3>
           <ul className="list-none space-y-2 mb-4">
             <li className="flex items-center"><CheckIcon /> Prihranek časa pri organizaciji prehrane</li>
             <li className="flex items-center"><CheckIcon /> Večja zanesljivost in manj stresa za zaposlene</li>
@@ -94,7 +94,7 @@ export default function Home() {
             <li className="flex items-center"><CheckIcon /> Fleksibilno pakiranje in dostava</li>
             <li className="flex items-center"><CheckIcon /> Sveža in uravnotežena hrana, ki podpira delovni ritem</li>
           </ul>
-          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Poskrbite za prehrano – brez dodatnega dela</h3>
+          <h3 className="text-xl font-bold text-[#231F20] mb-2 mt-6">Poskrbite za prehrano – brez dodatnega dela</h3>
           <p>
             Če želite svojim zaposlenim ponuditi nekaj več, a brez dodatnega napora, so malice za podjetja odlična rešitev. Z našim sistemom postane vsakodnevna prehrana preprosta, organizirana in prilagojena vašim željam.
           </p>
@@ -107,17 +107,17 @@ export default function Home() {
       icon: <ChefHatIcon />,
       content: (
         <div>
-          <h2 className="text-2xl font-extrabold text-yellow-300 mb-4">Kako načrtujemo tedenski meni za podjetja</h2>
+          <h2 className="text-2xl font-extrabold text-[#231F20] mb-4">Kako načrtujemo tedenski meni za podjetja</h2>
           <p className="mb-4">
             Pri zagotavljanju kakovostnih malic za podjetja ni pomembna le dostava in okus hrane, temveč tudi premišljeno načrtovan meni. V podjetju Moja Malca verjamemo, da mora biti prehrana v službi raznolika, uravnotežena in prilagojena dejanskim željam zaposlenih.
           </p>
-          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Naš sistem: fiksna osnova + dnevna rotacija</h3>
+          <h3 className="text-xl font-bold text-[#231F20] mb-2 mt-6">Naš sistem: fiksna osnova + dnevna rotacija</h3>
           <p className="mb-2">Da bi dosegli idealno ravnovesje med stabilnostjo in pestrostjo, naš tedenski meni temelji na dveh ključnih elementih:</p>
           <ul className="list-disc pl-6 mb-4 text-gray-200">
             <li><b>7–10 fiksnih obrokov mesečno:</b> To so priljubljene in preverjene jedi, ki so na voljo vsak dan. Zaposleni se lahko vedno zanesejo na svoje favorite.</li>
             <li><b>Dnevna rotacija 3 obrokov:</b> Vsak dan dodamo tri nova jedilnika, ki se dnevno menjajo. S tem ohranjamo raznolikost, sezonskost in omogočimo odkrivanje novih okusov.</li>
           </ul>
-          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Načrtovanje na podlagi povratnih informacij</h3>
+          <h3 className="text-xl font-bold text-[#231F20] mb-2 mt-6">Načrtovanje na podlagi povratnih informacij</h3>
           <p className="mb-2">Naš meni ni statičen. Redno analiziramo povratne informacije uporabnikov, spremljamo ocene in predloge, ter na podlagi analize:</p>
           <ul className="list-disc pl-6 mb-4 text-gray-200">
             <li>prilagajamo sestavo dnevne rotacije</li>
@@ -125,7 +125,7 @@ export default function Home() {
             <li>fiksiramo najbolj priljubljene obroke v mesečni osnovi</li>
           </ul>
           <p className="mb-4">S tem zagotavljamo, da so malice ne le okusne, ampak tudi vedno bolj prilagojene dejanskim željam podjetij in zaposlenih.</p>
-          <h3 className="text-xl font-bold text-yellow-200 mb-2 mt-6">Prednosti načrtovanega menija</h3>
+          <h3 className="text-xl font-bold text-[#231F20] mb-2 mt-6">Prednosti načrtovanega menija</h3>
           <ul className="list-none space-y-2 mb-4">
             <li className="flex items-center"><CheckIcon /> Večja raznolikost brez organizacijskih zapletov</li>
             <li className="flex items-center"><CheckIcon /> Preverjena kakovost in stabilna ponudba</li>
@@ -222,11 +222,14 @@ export default function Home() {
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <span className="hidden group-hover:inline text-sm">Kontakt</span>
+                <span className="text-sm">KONTAKT</span>
               </div>
               
+              {/* Invisible bridge to prevent hover gap */}
+              <div className="absolute top-full right-0 w-full h-2 bg-transparent"></div>
+              
               {/* Expanded Contact Options */}
-              <div className="absolute top-full right-0 mt-2 bg-[#262222] rounded-2xl shadow-2xl border border-gray-700 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto min-w-[220px] transform scale-95 group-hover:scale-100">
+              <div className="absolute top-full right-0 mt-0 bg-[#262222] rounded-2xl shadow-2xl border border-gray-700 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none group-hover:pointer-events-auto min-w-[220px] transform scale-95 group-hover:scale-100">
                 <div className="p-4 space-y-3">
                   <a href="tel:069846626" className="flex items-center gap-3 text-yellow-300 hover:text-yellow-400 transition-colors p-2 rounded-lg hover:bg-gray-700/50">
                     <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
@@ -389,58 +392,67 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Values Section */}
-      <section className="w-full max-w-5xl flex flex-col md:flex-row justify-between items-center gap-8 py-14">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex-1 flex flex-col items-center text-center bg-[#262222] rounded-2xl shadow-lg p-8 transition-transform duration-300 hover:scale-105"
-        >
-          <span className="mb-4 flex items-center justify-center">
-            <Image src="/icon1.png" alt="Ikona za zdravo prehrano - zeleni list" width={48} height={48} className="object-contain" />
-          </span>
-          <h2 className="text-2xl font-extrabold text-yellow-300 mb-2">Zdravo</h2>
-          <p className="text-gray-200">Uporabljamo le sveže in lokalne sestavine za pripravo uravnoteženih obrokov.</p>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="flex-1 flex flex-col items-center text-center bg-[#262222] rounded-2xl shadow-lg p-8 transition-transform duration-300 hover:scale-105"
-        >
-          <span className="mb-4 flex items-center justify-center">
-            <Image src="/icon2.png" alt="Ikona za sveže sestavine - sveže sadje" width={48} height={48} className="object-contain" />
-          </span>
-          <h2 className="text-2xl font-extrabold text-yellow-300 mb-2">Sveže</h2>
-          <p className="text-gray-200">Vsak obrok pripravimo tik pred dostavo, da ohranimo okus in hranilno vrednost.</p>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex-1 flex flex-col items-center text-center bg-[#262222] rounded-2xl shadow-lg p-8 transition-transform duration-300 hover:scale-105"
-        >
-          <span className="mb-4 flex items-center justify-center">
-            <Image src="/icon3.png" alt="Ikona za kakovostno hrano - kakovostni znak" width={48} height={48} className="object-contain" />
-          </span>
-          <h2 className="text-2xl font-extrabold text-yellow-300 mb-2">Kakovostno</h2>
-          <p className="text-gray-200">Kuhamo z ljubeznijo in skrbjo za vaše zdravje in dobro počutje.</p>
-        </motion.div>
-      </section>
+
 
       {/* Dostava na dom: Meni Section */}
-      <section id="meni" className="w-full max-w-4xl mx-auto py-12 px-4">
-        <h2 className="text-3xl md:text-4xl font-extrabold text-yellow-300 text-center mb-8">Dostava na dom: Meni</h2>
-        <MenuDeliveryList />
-      </section>
-
-      {/* Call to Order Section */}
-      <section className="w-full max-w-4xl mx-auto py-8 px-4 flex flex-col items-center">
-        <h3 className="text-2xl md:text-3xl font-extrabold text-yellow-300 mb-4 text-center">Pokliči nas za naročilo</h3>
-        <a href="tel:069846626" className="text-2xl md:text-3xl font-bold text-white bg-gradient-to-r from-yellow-300 to-orange-400 px-8 py-4 rounded-full shadow-lg hover:from-yellow-400 hover:to-orange-500 transition mb-2">
-          069 846 626
-        </a>
+      <section id="meni" className="w-full py-16 bg-gradient-to-b from-white via-yellow-200 to-yellow-300">
+        <div className="max-w-6xl mx-auto px-4">
+          {/* Simple Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#231F20] mb-4">
+              Dostava na dom: Meni
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-4 rounded-full"></div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Odkrijte našo raznoliko ponudbo svežih in okusnih obrokov
+            </p>
+          </div>
+          
+          {/* Menu Content */}
+          <MenuDeliveryList />
+          
+          {/* Call to Order Section */}
+          <div className="w-full max-w-5xl mx-auto py-12">
+            <div className="text-center mb-8">
+              <h3 className="text-3xl font-bold text-[#231F20] mb-2">Naročite zdaj</h3>
+              <p className="text-gray-600">Izberite način naročanja, ki vam najbolj ustreza</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+              {/* Call Option */}
+              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 text-center hover:shadow-xl transition-all duration-300 hover:border-yellow-200">
+                <div className="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <h4 className="text-xl font-bold text-[#231F20] mb-3">Pokliči nas</h4>
+                <p className="text-gray-600 mb-6">Naročite direktno preko telefona</p>
+                <a href="tel:069846626" className="inline-block bg-gradient-to-r from-yellow-400 to-orange-500 text-white font-bold py-3 px-8 rounded-full hover:from-yellow-500 hover:to-orange-600 transition-all duration-200 shadow-lg hover:shadow-xl">
+                  069 846 626
+                </a>
+              </div>
+              
+              {/* Wolt Option */}
+              <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 text-center hover:shadow-xl transition-all duration-300 hover:border-yellow-200">
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden">
+                  <Image 
+                    src="/woltlogo.jpeg" 
+                    alt="Wolt Logo" 
+                    width={64} 
+                    height={64} 
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+                <h4 className="text-xl font-bold text-[#231F20] mb-3">Naroči preko Wolt</h4>
+                <p className="text-gray-600 mb-6">Hitro naročanje preko Wolt aplikacije</p>
+                <a href="#" className="inline-block bg-gray-900 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-800 transition-all duration-200 shadow-lg hover:shadow-xl">
+                  Naroči na Wolt
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* For Companies Section */}
@@ -575,11 +587,22 @@ export default function Home() {
       </section>
 
       {/* Blog Section */}
-      <section className="w-full max-w-3xl mx-auto mt-12 mb-8 bg-[#262222] rounded-2xl shadow-lg p-4">
-        <h2 className="text-2xl md:text-3xl font-extrabold text-yellow-300 mb-4 text-center">Malice, zdravi obroki in novice</h2>
+      <section className="w-full py-16 bg-gradient-to-b from-white via-yellow-200 to-yellow-300">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#231F20] mb-4">
+              Malice, zdravi obroki in novice
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto mb-4 rounded-full"></div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Odkrijte koristne informacije o zdravih malicah in naših storitvah
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-6">
         <ul className="space-y-3">
           {blogPosts.map((post, idx) => (
-            <li key={idx} className="border border-gray-700 rounded-lg overflow-hidden transition-shadow hover:shadow-xl bg-[#231F20]">
+            <li key={idx} className="border border-gray-200 rounded-lg overflow-hidden transition-shadow hover:shadow-xl bg-white">
               <button
                 className="w-full text-left px-4 py-3 flex items-center gap-3 focus:outline-none group"
                 onClick={() => setExpandedIndex(expandedIndex === idx ? null : idx)}
@@ -587,8 +610,8 @@ export default function Home() {
               >
                 <span className="flex-shrink-0">{post.icon}</span>
                 <div className="flex-1 min-w-0">
-                  <div className="text-base md:text-lg font-bold text-yellow-200 group-hover:text-yellow-300 transition-colors">{post.title}</div>
-                  <div className="text-gray-400 text-xs mt-0.5 line-clamp-2">{post.excerpt}</div>
+                  <div className="text-xl font-bold text-[#231F20] group-hover:text-yellow-600 transition-colors">{post.title}</div>
+                  <div className="text-gray-600 text-xs mt-0.5 line-clamp-2">{post.excerpt}</div>
                 </div>
                 <span className={`ml-3 transition-transform duration-300 ${expandedIndex === idx ? 'rotate-90' : ''}`}>▶</span>
               </button>
@@ -597,7 +620,7 @@ export default function Home() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, ease: 'easeOut' }}
-                  className="px-4 py-3 border-t border-gray-700 text-gray-200 bg-[#2d292a]"
+                  className="px-4 py-3 border-t border-gray-200 text-gray-700 bg-gray-50"
                 >
                   {typeof post.content === 'string' ? (
                     <ReactMarkdown className="prose prose-invert max-w-none text-gray-200">{post.content}</ReactMarkdown>
@@ -609,7 +632,11 @@ export default function Home() {
             </li>
           ))}
         </ul>
+          </div>
+        </div>
       </section>
+
+
 
       {/* FAQ Section */}
       <section className="w-full max-w-4xl mx-auto px-4 py-16">
@@ -772,18 +799,18 @@ export default function Home() {
       </section>
 
       {/* New Section for Partner Companies */}
-      <section className="w-full flex flex-col items-center justify-center py-12 bg-yellow-50 border-t border-b border-yellow-200">
-        <h2 className="text-2xl font-bold text-yellow-700 mb-4">Dostop za podjetja, ki sodelujejo z nami.</h2>
-        <div className="flex flex-col sm:flex-row gap-4">
+      <section className="w-full flex flex-col items-center justify-center py-16 bg-gradient-to-b from-white via-yellow-200 to-yellow-300">
+        <h2 className="text-3xl font-bold text-[#231F20] mb-8 text-center">Dostop za podjetja, ki sodelujejo z nami.</h2>
+        <div className="flex flex-col sm:flex-row gap-6">
           <a
             href="/sistem/podjetje/login"
-            className="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full shadow-lg text-lg transition text-center"
+            className="px-10 py-4 bg-[#231F20] hover:bg-gray-800 text-white font-bold rounded-full shadow-xl text-lg transition-all duration-300 transform hover:scale-105 text-center border-2 border-[#231F20] hover:border-gray-800"
           >
             Dostop za podjetje
           </a>
           <a
             href="/sistem/zaposleni/login"
-            className="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded-full shadow-lg text-lg transition text-center"
+            className="px-10 py-4 bg-white hover:bg-gray-50 text-[#231F20] font-bold rounded-full shadow-xl text-lg transition-all duration-300 transform hover:scale-105 text-center border-2 border-[#231F20] hover:border-gray-800"
           >
             Dostop za zaposlene
           </a>
@@ -1023,27 +1050,44 @@ function MenuDeliveryList() {
     );
   }
 
-  return (
+    return (
     <div className="space-y-8">
       {Object.entries(groupedMenus).map(([category, categoryMenus]) => (
         <div key={category}>
-          <h3 className="text-2xl font-bold text-yellow-200 mb-4 text-center">
-            {category}
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Simple Category Header */}
+          <div className="text-center mb-6 relative">
+            <h3 className="text-2xl font-bold text-[#231F20] mb-2 relative z-10">
+              {category}
+            </h3>
+
+            
+            {/* Animated energy dots */}
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-orange-400 opacity-60 blur-[1px] animate-energy-1" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-yellow-400 opacity-60 blur-[1px] animate-energy-2" />
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-orange-500 opacity-60 blur-[1px] animate-energy-3" />
+          </div>
+          
+          {/* Simple Menu Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {(categoryMenus as any[]).map((menu: any) => (
               <div
                 key={menu.id}
-                className="bg-[#262222] rounded-2xl shadow-lg p-6 flex flex-col items-start"
+                className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 flex flex-col h-full hover:shadow-md hover:border-yellow-300 transition-all duration-200 group"
               >
-                <h3 className="text-xl font-bold text-yellow-200 mb-2">
+                <h3 className="text-xl font-bold text-[#231F20] mb-3 group-hover:text-yellow-700 transition-colors duration-200">
                   {menu.name}
                 </h3>
+                
                 {menu.description && (
-                  <p className="text-gray-300 mb-2">{menu.description}</p>
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed flex-1">
+                    {menu.description}
+                  </p>
                 )}
-                <div className="text-yellow-300 font-bold text-lg mt-auto">
-                  {menu.price}
+                
+                <div className="mt-auto pt-3 border-t border-gray-200 group-hover:border-yellow-200 transition-colors duration-200">
+                  <span className="text-yellow-600 font-bold text-lg group-hover:text-yellow-700 transition-colors duration-200">
+                    {menu.price}
+                  </span>
                 </div>
               </div>
             ))}
